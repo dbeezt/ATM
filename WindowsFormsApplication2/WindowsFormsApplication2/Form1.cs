@@ -139,7 +139,7 @@ namespace WindowsFormsApplication2
 
         private void createKeypad()
         {
-            keypadArea.Controls.Clear();
+
 
 
             Button[, ] keypad = new Button[3, 3];
@@ -150,6 +150,8 @@ namespace WindowsFormsApplication2
 
             BackColor = Color.DarkGray;
             displayArea.BackColor = Color.FromArgb(153, 204, 255);
+            
+            
 
             for (int i = 0; i < 3; i++)
             {
