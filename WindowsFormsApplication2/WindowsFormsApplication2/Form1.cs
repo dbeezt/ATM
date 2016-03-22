@@ -153,7 +153,9 @@ namespace WindowsFormsApplication2
             BackColor = Color.DarkGray;
             displayArea.BackColor = Color.FromArgb(153, 204, 255);
             
-            
+
+
+
 
             for (int i = 0; i < 3; i++)
             {
@@ -175,26 +177,41 @@ namespace WindowsFormsApplication2
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void checkAccount()
         {
+                if (submit == true)
+                {
+                    if (findAccount(22222) == null)
+                    {
+                        label1.Text = "Account does not exist!";
+                    }
 
-            label1.Text = "enter your account number..";
-            submit = false;
-            if (submit == true) { if (findAccount(22222) == null) { label1.Text = "Account does not exist!"; } }
+                }            
             activeAccount = findAccount(222222);
+        }
+
+        private void checkPin()
+        {
             label1.Text = "enter pin:";
             if (promptForPin(2222) == false) { label1.Text = "incorrect Pin"; }
             label1.Text = "1> take out cash";
             label1.Text = "2> balance";
             label1.Text = "3> exit";
             dispOptions(1);
+        }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            label1.Text = "enter your account number..";
+            if (activeAccount==null) {  }
+            checkAccount();
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
 
+            submit = true;
         }
 
         private class Account
