@@ -19,6 +19,7 @@ namespace WindowsFormsApplication2
         {
             InitializeComponent();
             createKeypad();
+            instructionBox.Text = "Enter Your Account Number";
             ac[0] = new Account(300, 1111, 111111);
             ac[1] = new Account(750, 2222, 222222);
             ac[2] = new Account(3000, 3333, 333333);
@@ -40,11 +41,13 @@ namespace WindowsFormsApplication2
 
         public bool promptForPin(int pin)
         {
+            instructionBox.Text = "Enter Your Pin";
             return activeAccount.checkPin(pin);
         }
 
         public void dispOptions(int input)
         {
+            instructionBox.Text = "Select an Option";
 
             if (input == 1)
             {
@@ -144,49 +147,70 @@ namespace WindowsFormsApplication2
 
 
 
-            Button[, ] keypad = new Button[3, 3];
-            int startXPos = 25;
-            int startYPos = 225;
-            int buttonWidth = 20;
-            int buttonHeight = 20;
-
+            Button[, ] keypad = new Button[4, 4];
+            int startXPos = 170;
+            int startYPos = 10;
+            int buttonWidth = 30;
+            int buttonHeight = 30;
+            string[] keypadNum = {"7", "4", "1", "", "8", "5", "2", "0", "9", "6", "3", "", "CANCEL", "CLEAR", "ENTER", "", ""};
             BackColor = Color.DarkGray;
             displayArea.BackColor = Color.FromArgb(153, 204, 255);
-            
+            int num = 0;
             
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     keypad[i, j] = new Button();
-                    keypad[i, j].SetBounds((startXPos + (25 * i)), (startYPos + (25 * j)), buttonWidth, buttonHeight);
-                    keypad[i, j].BackColor = Color.Black;
+                    keypad[i, j].SetBounds((startXPos + (31 * i)), (startYPos + (31 * j)), buttonWidth, buttonHeight);
+                    keypad[i, j].BackColor = Color.LightGray;
                     keypad[i, j].Visible = true;
                     keypad[i, j].TabStop = false;
                     keypad[i, j].FlatStyle = FlatStyle.Popup;
                     keypad[i, j].FlatAppearance.BorderColor = Color.Black;
                     keypad[i, j].FlatAppearance.BorderSize = 0;
                     keypad[i, j].Show();
+                    keypad[i, j].Text = keypadNum[num].ToString();
+                    num++;
                     keypadArea.Controls.Add(keypad[i, j]);
 
-
+                    if (keypad[i, j].Text == "CANCEL")
+                    {
+                        keypad[i, j].BackColor = Color.Red;
+                    }
+                    if (keypad[i, j].Text == "CLEAR")
+                    {
+                        keypad[i, j].BackColor = Color.Yellow;
+                       
+                    }
+                    if (keypad[i, j].Text == "ENTER")
+                    {
+                        keypad[i, j].BackColor = Color.Green;
+                    }
+                    if (keypad[i, j].BackColor != Color.LightGray)
+                    {
+                        keypad[i, j].Font = new Font(keypad[i, j].Font.FontFamily, 6.0F);
+                        keypad[i, j].SetBounds((startXPos + (31 * i)), (startYPos + (31 * j)), 45, buttonHeight);
+                    }
                 }
             }
+
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            label1.Text = "enter your account number..";
+            instructionBox.Text = "enter your account number..";
             submit = false;
-            if (submit == true) { if (findAccount(22222) == null) { label1.Text = "Account does not exist!"; } }
+            if (submit == true) { if (findAccount(22222) == null) { instructionBox.Text = "Account does not exist!"; } }
             activeAccount = findAccount(222222);
-            label1.Text = "enter pin:";
-            if (promptForPin(2222) == false) { label1.Text = "incorrect Pin"; }
-            label1.Text = "1> take out cash";
-            label1.Text = "2> balance";
-            label1.Text = "3> exit";
+            instructionBox.Text = "enter pin:";
+            if (promptForPin(2222) == false) { instructionBox.Text = "incorrect Pin"; }
+            instructionBox.Text = "1> take out cash";
+            instructionBox.Text = "2> balance";
+            instructionBox.Text = "3> exit";
             dispOptions(1);
 
         }
@@ -270,7 +294,10 @@ namespace WindowsFormsApplication2
 
         }
 
-        
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
