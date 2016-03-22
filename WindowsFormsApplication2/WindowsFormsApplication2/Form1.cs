@@ -177,14 +177,14 @@ namespace WindowsFormsApplication2
         {
 
             label1.Text = "enter your account number..";
-            //bool submit = false;
-            //while (submit == false){}
+            submit = false;
+            if (submit == true) { if (findAccount(22222) == null) { label1.Text = "Account does not exist!"; } }
             activeAccount = findAccount(222222);
             label1.Text = "enter pin:";
             if (promptForPin(2222) == false) { label1.Text = "incorrect Pin"; }
-            label1.Text="1> take out cash";
-            label1.Text="2> balance";
-            label1.Text="3> exit";
+            label1.Text = "1> take out cash";
+            label1.Text = "2> balance";
+            label1.Text = "3> exit";
             dispOptions(1);
 
         }
