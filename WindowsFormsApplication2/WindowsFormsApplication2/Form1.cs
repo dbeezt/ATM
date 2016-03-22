@@ -13,7 +13,7 @@ namespace WindowsFormsApplication2
     public partial class Form1 : Form
     {
         Account[] ac = new Account[3];
-        bool submit = false;
+        bool accountChecked = false;
         private Account activeAccount = null;
         public Form1()
         {
@@ -177,52 +177,45 @@ namespace WindowsFormsApplication2
             }
         }
 
-        private void checkAccount()
+        private void checkAccount(int accountNumber)
         {
-                if (submit == true)
-                {
-                    if (findAccount(22222) == null)
-                    {
-                        label1.Text = "Account does not exist!";
-                    }
-
-                }            
-            activeAccount = findAccount(222222);
+            if (findAccount(accountNumber) == null)
+            {
+                label1.Text = "Account does not exist! Please try again";
+            }
+            else {
+                activeAccount = findAccount(accountNumber);
+                accountChecked = true;
+            }
         }
 
-        private void checkPin()
+        private bool checkPin(int pinNumber)
         {
             label1.Text = "enter pin:";
-            if (promptForPin(2222) == false) { label1.Text = "incorrect Pin"; }
-            label1.Text = "1> take out cash";
-            label1.Text = "2> balance";
-            label1.Text = "3> exit";
-            dispOptions(1);
+            bool correct = promptForPin(pinNumber);
+            return correct;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             label1.Text = "enter your account number..";
-            if (activeAccount==null) {  }
-            checkAccount();
+            if (activeAccount==null) { checkAccount(222322); }
+            if (activeAccount != null) { checkPin(2222); }
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
 
-            submit = true;
+            if (accountChecked == false) { checkAccount(222322); }
         }
 
         private class Account
         {
-
-            //the attributes for the account
             private int balance;
             private int pin;
             private int accountNum;
 
-            // a constructor that takes initial values for each of the attributes (balance, pin, accountNumber)
             public Account(int balance, int pin, int accountNum)
             {
                 this.balance = balance;
@@ -230,25 +223,16 @@ namespace WindowsFormsApplication2
                 this.accountNum = accountNum;
             }
 
-            //getter and setter functions for balance
             public int getBalance()
             {
                 return balance;
             }
+
             public void setBalance(int newBalance)
             {
                 this.balance = newBalance;
             }
 
-            /*
-             *   This funciton allows us to decrement the balance of an account
-             *   it perfomes a simple check to ensure the balance is greater tha
-             *   the amount being debeted
-             *   
-             *   reurns:
-             *   true if the transactions if possible
-             *   false if there are insufficent funds in the account
-             */
             public Boolean decrementBalance(int amount)
             {
                 if (this.balance > amount)
@@ -262,13 +246,6 @@ namespace WindowsFormsApplication2
                 }
             }
 
-            /*
-             * This funciton check the account pin against the argument passed to it
-             *
-             * returns:
-             * true if they match
-             * false if they do not
-             */
             public Boolean checkPin(int pinEntered)
             {
                 if (pinEntered == pin)
@@ -280,14 +257,13 @@ namespace WindowsFormsApplication2
                     return false;
                 }
             }
+
             public int getAccountNum()
             {
                 return accountNum;
             }
 
-        }
-
-        
+        }       
     }
 }
 

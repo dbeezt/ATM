@@ -32,6 +32,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.displayArea = new System.Windows.Forms.Panel();
             this.keypadArea = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.displayArea.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +57,7 @@
             // 
             // displayArea
             // 
+            this.displayArea.Controls.Add(this.textBox1);
             this.displayArea.Controls.Add(this.button1);
             this.displayArea.Controls.Add(this.label1);
             this.displayArea.Location = new System.Drawing.Point(2, 3);
@@ -69,6 +71,13 @@
             this.keypadArea.Name = "keypadArea";
             this.keypadArea.Size = new System.Drawing.Size(321, 119);
             this.keypadArea.TabIndex = 3;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(103, 62);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 2;
             // 
             // Form1
             // 
@@ -92,6 +101,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel displayArea;
         private System.Windows.Forms.Panel keypadArea;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
