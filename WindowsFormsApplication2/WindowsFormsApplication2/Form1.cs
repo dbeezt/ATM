@@ -12,7 +12,8 @@ namespace WindowsFormsApplication2
 {
     public partial class Form1 : Form
     {
-         Account[] ac = new Account[3];
+        Account[] ac = new Account[3];
+        bool submit = false;
         private Account activeAccount = null;
         public Form1()
         {
@@ -44,7 +45,7 @@ namespace WindowsFormsApplication2
 
         public void dispOptions(int input)
         {
-            
+
             if (input == 1)
             {
                 dispWithdraw();
@@ -64,7 +65,7 @@ namespace WindowsFormsApplication2
             }
 
         }
-        
+
         public void dispWithdraw()
         {
             Console.WriteLine("1> 10");
@@ -127,14 +128,15 @@ namespace WindowsFormsApplication2
                 }
             }
         }
-        
+
         public int dispBalance()
         {
             if (this.activeAccount != null)
             {
                 int bal = activeAccount.getBalance();
                 return bal;
-            } else { return -111; };
+            }
+            else { return -111; };
         }
 
         private void createKeypad()
