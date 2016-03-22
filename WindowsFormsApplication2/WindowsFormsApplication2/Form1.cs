@@ -13,7 +13,7 @@ namespace WindowsFormsApplication2
     public partial class Form1 : Form
     {
         Account[] ac = new Account[3];
-        bool submit = false;
+        bool accountChecked = false;
         private Account activeAccount = null;
         public Form1()
         {
@@ -155,8 +155,15 @@ namespace WindowsFormsApplication2
             string[] keypadNum = {"7", "4", "1", "", "8", "5", "2", "0", "9", "6", "3", "", "CANCEL", "CLEAR", "ENTER", "", ""};
             BackColor = Color.DarkGray;
             displayArea.BackColor = Color.FromArgb(153, 204, 255);
+<<<<<<< HEAD
             int num = 0;
             
+=======
+            
+
+
+
+>>>>>>> origin/master
 
             for (int i = 0; i < 4; i++)
             {
@@ -210,9 +217,19 @@ namespace WindowsFormsApplication2
             
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void checkAccount(int accountNumber)
         {
+            if (findAccount(accountNumber) == null)
+            {
+                label1.Text = "Account does not exist! Please try again";
+            }
+            else {
+                activeAccount = findAccount(accountNumber);
+                accountChecked = true;
+            }
+        }
 
+<<<<<<< HEAD
             instructionBox.Text = "enter your account number..";
             submit = false;
             if (submit == true) { if (findAccount(22222) == null) { instructionBox.Text = "Account does not exist!"; } }
@@ -223,24 +240,35 @@ namespace WindowsFormsApplication2
             instructionBox.Text = "2> balance";
             instructionBox.Text = "3> exit";
             dispOptions(1);
+=======
+        private bool checkPin(int pinNumber)
+        {
+            label1.Text = "enter pin:";
+            bool correct = promptForPin(pinNumber);
+            return correct;
+        }
+>>>>>>> origin/master
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            label1.Text = "enter your account number..";
+            if (activeAccount==null) { checkAccount(222322); }
+            if (activeAccount != null) { checkPin(2222); }
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
 
+            if (accountChecked == false) { checkAccount(222322); }
         }
 
         private class Account
         {
-
-            //the attributes for the account
             private int balance;
             private int pin;
             private int accountNum;
 
-            // a constructor that takes initial values for each of the attributes (balance, pin, accountNumber)
             public Account(int balance, int pin, int accountNum)
             {
                 this.balance = balance;
@@ -248,25 +276,16 @@ namespace WindowsFormsApplication2
                 this.accountNum = accountNum;
             }
 
-            //getter and setter functions for balance
             public int getBalance()
             {
                 return balance;
             }
+
             public void setBalance(int newBalance)
             {
                 this.balance = newBalance;
             }
 
-            /*
-             *   This funciton allows us to decrement the balance of an account
-             *   it perfomes a simple check to ensure the balance is greater tha
-             *   the amount being debeted
-             *   
-             *   reurns:
-             *   true if the transactions if possible
-             *   false if there are insufficent funds in the account
-             */
             public Boolean decrementBalance(int amount)
             {
                 if (this.balance > amount)
@@ -280,13 +299,6 @@ namespace WindowsFormsApplication2
                 }
             }
 
-            /*
-             * This funciton check the account pin against the argument passed to it
-             *
-             * returns:
-             * true if they match
-             * false if they do not
-             */
             public Boolean checkPin(int pinEntered)
             {
                 if (pinEntered == pin)
@@ -298,17 +310,22 @@ namespace WindowsFormsApplication2
                     return false;
                 }
             }
+
             public int getAccountNum()
             {
                 return accountNum;
             }
 
+<<<<<<< HEAD
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
+=======
+        }       
+>>>>>>> origin/master
     }
 }
 

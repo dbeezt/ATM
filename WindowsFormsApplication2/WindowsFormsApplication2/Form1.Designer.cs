@@ -32,9 +32,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.displayArea = new System.Windows.Forms.Panel();
             this.keypadArea = new System.Windows.Forms.Panel();
+<<<<<<< HEAD
             this.option1 = new System.Windows.Forms.Label();
             this.option2 = new System.Windows.Forms.Label();
             this.option3 = new System.Windows.Forms.Label();
+=======
+            this.textBox1 = new System.Windows.Forms.TextBox();
+>>>>>>> origin/master
             this.displayArea.SuspendLayout();
             this.keypadArea.SuspendLayout();
             this.SuspendLayout();
@@ -62,10 +66,16 @@
             // 
             // displayArea
             // 
+<<<<<<< HEAD
             this.displayArea.Controls.Add(this.option3);
             this.displayArea.Controls.Add(this.option2);
             this.displayArea.Controls.Add(this.option1);
             this.displayArea.Controls.Add(this.instructionBox);
+=======
+            this.displayArea.Controls.Add(this.textBox1);
+            this.displayArea.Controls.Add(this.button1);
+            this.displayArea.Controls.Add(this.label1);
+>>>>>>> origin/master
             this.displayArea.Location = new System.Drawing.Point(2, 3);
             this.displayArea.Name = "displayArea";
             this.displayArea.Size = new System.Drawing.Size(322, 195);
@@ -79,6 +89,7 @@
             this.keypadArea.Size = new System.Drawing.Size(321, 138);
             this.keypadArea.TabIndex = 3;
             // 
+<<<<<<< HEAD
             // option1
             // 
             this.option1.AutoSize = true;
@@ -108,6 +119,14 @@
             this.option3.Size = new System.Drawing.Size(92, 16);
             this.option3.TabIndex = 3;
             this.option3.Text = "3. Return Card";
+=======
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(103, 62);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 2;
+>>>>>>> origin/master
             // 
             // Form1
             // 
@@ -132,9 +151,13 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel displayArea;
         private System.Windows.Forms.Panel keypadArea;
+<<<<<<< HEAD
         private System.Windows.Forms.Label option1;
         private System.Windows.Forms.Label option2;
         private System.Windows.Forms.Label option3;
+=======
+        private System.Windows.Forms.TextBox textBox1;
+>>>>>>> origin/master
     }
 }
 
