@@ -175,23 +175,34 @@ namespace WindowsFormsApplication2
                     num++;
                     keypadArea.Controls.Add(keypad[i, j]);
 
+                    //Apply colour 'green' to CANCEL button
                     if (keypad[i, j].Text == "CANCEL")
                     {
                         keypad[i, j].BackColor = Color.Red;
                     }
+                    //Apply colour 'yellow' to CLEAR button
                     if (keypad[i, j].Text == "CLEAR")
                     {
                         keypad[i, j].BackColor = Color.Yellow;
                        
                     }
+
+                    //Apply colour 'green' to ENTER button
                     if (keypad[i, j].Text == "ENTER")
                     {
                         keypad[i, j].BackColor = Color.Green;
                     }
+
+                    //Increase size of 'text' buttons to accommodate for length of words
                     if (keypad[i, j].BackColor != Color.LightGray)
                     {
                         keypad[i, j].Font = new Font(keypad[i, j].Font.FontFamily, 6.0F);
                         keypad[i, j].SetBounds((startXPos + (31 * i)), (startYPos + (31 * j)), 45, buttonHeight);
+                    }
+                    //Remove empty buttons
+                    if (keypad[i, j].Text == "")
+                    {
+                        keypadArea.Controls.Remove(keypad[i, j]);
                     }
                 }
             }
